@@ -5,10 +5,12 @@ Citizen Service Request is a configuration of ArcGIS Server and a HTML 5 / JavaS
 
 [Try the Citizen Service Request application](http://localgovtemplates2.esri.com/citizenservicerequest/default.htm)
 
+![Image of Citizen Service Request application](https://raw.github.com/Esri/park-and-recreation-finder/master/citizen-service-request.png "Citizen Service Request application")
+
 ## Features
 
 * Review services request submitted by others in community
-* Submit new requests for service 
+* Submit new requests for service
 * Submit comments or concerns to the local government on existing service requests
 * Share with social media
 
@@ -70,4 +72,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 A copy of the license is available in the repository's
-[license.txt](https://github.com/Esri/citizen-service-request/blob/master/license.txt) file.
+[license.txt](https://raw.github.com/Esri/citizen-service-request/master/license.txt) file.

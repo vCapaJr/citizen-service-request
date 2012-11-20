@@ -1,0 +1,346 @@
+﻿/* This file contains the mobile specific style settings for "Service Request" template */
+/*
+ | Copyright 2012 Esri
+ |
+ | Licensed under the Apache License, Version 2.0 (the "License");
+ | you may not use this file except in compliance with the License.
+ | You may obtain a copy of the License at
+ |
+ |    http://www.apache.org/licenses/LICENSE-2.0
+ |
+ | Unless required by applicable law or agreed to in writing, software
+ | distributed under the License is distributed on an "AS IS" BASIS,
+ | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ | See the License for the specific language governing permissions and
+ | limitations under the License.
+ */
+/* The common settings for the styles are defined in "serviceRequest.css" */
+/* Use this file to perform the following: */
+/* 1.  Set the body styles                      - { Style(s) to look for: html, body } */
+/* 2.  Set styles for icons, buttons and header
+      styles                                    - { Style(s) to look for: customButton,tableHeader,tdHeader,imgOptions,imgShare}*/
+/* 3.  Set the styles for search container      - { Style(s) to look for: divAddressContainer,divAddressContent,txtAddress,imgLocate}*/
+/* 4.  Set the styles for info window           - { Style(s) to look for: divInfoWindowContainer,imgArrow,divCreateRequestContainer,txtFileName
+                                                                          divCreateRequest,txtSelectedRequest, txtDescription,divDropdown,txtBox,divDropDownContainer,imgDropdownCarot,
+                                                                          trTextAreaRowStyle,divInfoContent,divInfoDetails,divInfoContainer,trRowStyle,infoOptions,spanContentText}*/
+/* 5.  Set the styles for esri slider           - { Style(s) to look for: esriSimpleSlider}*/
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Styles for body*/
+
+html, body
+{
+    font-size: 15px !important;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*styles for icons, buttons and header styles*/
+
+.customButton
+{
+    height: 30px !important;
+}
+
+.tableHeader
+{
+    width: 200px;
+}
+
+.tdHeader
+{
+    width: 70px;
+    font-weight: bolder;
+    padding: 0px 10px 0px 10px;
+}
+
+.imgOptions, .imgShare
+{
+    height: 44px !important;
+    width: 44px !important;
+    vertical-align: middle;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*Styles for address container*/
+
+.divAddressContainer
+{
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.9);
+    position: absolute;
+    z-index: 1002;
+    width: 100%;
+    height: 100%;
+}
+
+.divAddressContent
+{
+    z-index: 1002;
+    background-color: rgba(98, 98, 98,.95);
+    width: 99%;
+    height: 99%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0 0 10px #fff;
+    -o-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.imgLocate
+{
+    height: 44px !important;
+    width: 44px !important;
+}
+
+.bottomborder
+{
+    height: 40px;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*Styles for Info window container*/
+
+.imgArrow
+{
+    z-index: 1000;
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 4px;
+    height: 50px;
+    width: 50px;
+}
+
+.trTextAreaRowStyle
+{
+    height: 58px !important;
+}
+
+.divCmtIpContainer
+{
+    position: relative;
+}
+
+.submitDiv
+{
+    height: 30px;
+}
+
+.divInfoContent
+{
+    background-color: rgba(98, 98, 98,.95);
+    width: 99%;
+    height: 99%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    z-index: 1002;
+    -webkit-box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0 0 10px #fff;
+    -o-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.divCreateRequestContainer
+{
+    background-color: rgba(98, 98, 98,.95);
+    width: 99%;
+    height: 99%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    z-index: 1002;
+    -webkit-box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0 0 10px #fff;
+    -o-box-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+.divInfoDetails, .divCreateRequestContent
+{
+    position: relative;
+}
+
+.divInfoContainer
+{
+    z-index: 1002;
+}
+
+.divCreateRequest
+{
+    height: 100%;
+    z-index: 1002;
+}
+
+.txtDescription, .txtBox, .txtFileName, .divRequestTypes, .txtArea
+{
+    font-size: 15px !important;
+    width: 90%;
+}
+.txtSelectedRequest
+{
+    width: 100%;
+    font-size: 15px !important;
+}
+
+.fileinputs
+{
+    width: 60px;
+    height:44px;
+    outline: none;
+    background: url("../images/browse1.png") 0 0 no-repeat;
+    border:none;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+.submitTable
+{
+    width: 100%;
+}
+.txtSelectedRequest
+{
+    height: 44px !important;
+}
+
+.infoOptions
+{
+    height: 44px !important;
+    width: 44px !important;
+    vertical-align: middle;
+    padding-left: 2px;
+    padding-right: 3px;
+}
+
+.divDropDownContainer, .divDropdown
+{
+    height: 44px !important;
+    width: 90% !important;
+}
+.fileinputs
+{
+    width: 70px !important;
+    height: 44px !important;
+}
+.txtBox, .fileUploadContainer
+{
+    height: 44px !important;
+}
+.txtFileName
+{
+    height: 44px !important;
+}
+.fileUploadContainer INPUT
+{
+    width: 105px !important;
+}
+
+.trRowStyle
+{
+    height: 50px !important;
+}
+
+.filehidden
+{
+    height: 44px;
+}
+
+.imgDropdownCarot
+{
+    height: 44px !important;
+    width: 44px !important;
+    margin-right:-4px !important;
+}
+/*---------------------------------------------------------------------------------------------------------*/
+/*Styles for share application container*/
+
+.divAppContainer
+{
+    z-index: 1002;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* esri slider style*/
+.esriSimpleSlider
+{
+    left: 5px !important;
+    top: 60px !important;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*Styles for text area control*/
+
+/* Portrait */
+
+@media screen and (max-width: 320px)
+{
+
+    .txtArea
+    {
+        width: 270px !important;
+        height: 120px !important;
+    }
+    .txtAddress
+    {
+        height: 44px !important;
+        font-size: 15px !important;
+        width: 85% !important;
+        padding: 0px !important;
+        font-family: Verdana !important;
+    }
+    .divCommentsContent, .divInfoDetailsScroll
+    {
+        width: 95% !important;
+    }
+     .tdAttach
+    {
+        width:85%;
+    }
+    .tdSelect
+    {
+        width:15%;
+    }
+
+}
+
+/* Landscape */
+
+@media screen and (min-width: 321px) and (max-width: 480px)
+{
+
+    .txtArea
+    {
+        width: 420px !important;
+        height: 85px !important;
+        font-family: Verdana !important;
+    }
+    .tdAttach
+    {
+        width:75%;
+    }
+    .tdSelect
+    {
+        width:25%;
+    }
+
+    .txtAddress
+    {
+        height: 44px !important;
+        font-size: 15px !important;
+        width: 90% !important;
+        padding: 0px !important;
+        font-family: Verdana !important;
+    }
+    .divCommentsContent, .divInfoDetailsScroll
+    {
+        width: 97% !important;
+    }
+    .divCreateRequestScrollContent
+    {
+        width: 100% !important;
+    }
+
+}
