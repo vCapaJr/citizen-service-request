@@ -80,5 +80,5 @@ limitations under the License.
 A copy of the license is available in the repository's
 [license.txt](https://raw.github.com/Esri/citizen-service-request/master/license.txt) file.
 
-[](Esri Tags: Local Government citizen service request)
+[](Esri Tags: Local Government Citizen Service Request)
 [](Esri Language: JavaScript)
