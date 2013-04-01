@@ -1,6 +1,6 @@
 ﻿/* This file contains the mobile specific style settings for "Service Request" template */
 /*
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,12 +19,16 @@
 /* Use this file to perform the following: */
 /* 1.  Set the body styles                      - { Style(s) to look for: html, body } */
 /* 2.  Set styles for icons, buttons and header styles
-                                                - { Style(s) to look for: customButton,tableHeader,tdHeader,imgOptions,imgShare}*/
-/* 3.  Set the styles for search container      - { Style(s) to look for: divAddressContainer,divAddressContent,txtAddress,imgLocate}*/
-/* 4.  Set the styles for basemap container     - { Style(s) to look for: divLayerContainer,divLayerHolder,selectedBaseMap}*/
-/* 5.  Set the styles for info window           - { Style(s) to look for: infoOptions,txtSelectedRequest,divDropdown,txtBox, txtDescription, divDropDownContainer,
-                                                                          trRowStyle,spanContentText}*/
-/* 6.  Set the styles for esri slider           - { Style(s) to look for: esriSimpleSlider}*/
+                                                - { Style(s) to look for: imgOptions,imgShare,tdHeader,customButton}*/
+/* 3.  Set the styles for search container      - { Style(s) to look for: divAddressContent,imgLocate,tdSearchByUnSelectedAddress,tdSearchByUnSelectedRequest,tdSearchByRequest,
+                                                                          txtAddress,bottomborder}*/
+/* 4.  Set the styles for basemap container     - { Style(s) to look for: divLayerContainer,divLayerHolder,basemapThumbnail,baseMapContainerNode,selectedBaseMap}*/
+/* 5.  Set styles icons styles                  - { Style(s) to look for: imgApp}*/
+/* 6.  Set the styles for info window           - { Style(s) to look for: divRequestTypes,divInfoContainer,divInfoContent,submitTable,infoOptions,txtArea,divCreateRequestContainer,
+                                                                          divCommentsContainer,divInfoDetails,divCreateRequestContent,divCreateRequest,imgDropdownCarot,txtBox,txtDescription,
+                                                                          divDropDownContainer,divDropdown,divCmtIpContainer,txtSelectedRequest,txtDescription,scrollbar_container,scrollbar_content
+																		  trRowStyle}*/
+/* 7.  Set the styles for esri slider           - { Style(s) to look for: esriSimpleSlider,divAddressScrollContent}*/
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Styles for body*/
@@ -36,7 +40,7 @@ html, body
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*Styles for icons */
-.imgOptions,.imgShare
+.imgOptions, .imgShare
 {
     height: 44px !important;
     width: 44px !important;
@@ -60,7 +64,7 @@ html, body
 .divAddressContent
 {
     z-index: 1002;
-    position:absolute;
+    position: absolute;
     top: 60px;
     right: 15px;
     width: 300px;
@@ -74,18 +78,24 @@ html, body
 {
     height: 44px !important;
     width: 44px !important;
+    vertical-align: middle;
+    top: 52px;
+    right: 15px;
+}
+.tdSearchByUnSelectedAddress, .tdSearchByUnSelectedRequest, .tdSearchByRequest, .tdSearchByAddress
+{
+    width: 90px;
 }
 
 .txtAddress
 {
-    width:230px !important;
-    height:44px !important;
+    height: 44px !important;
     font-size: 14px !important;
 }
 
 .bottomborder
 {
-    height :30px;
+    height: 30px;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -103,7 +113,7 @@ html, body
 .divLayerHolder
 {
     width: 225px;
-    height:100px;
+    height: 100px;
     background: rgba(0,0,0,0.9);
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -112,7 +122,7 @@ html, body
 
 .basemapThumbnail
 {
-    width:75px;
+    width: 75px;
     height: 50px;
 }
 
@@ -127,7 +137,6 @@ html, body
     -moz-box-shadow: 0 0 15px #63BA65;
     box-shadow: 0 0 15px #63BA65;
     filter: progid:DXImageTransform.Microsoft.Glow(color='#8EAE21', Strength='4');
-
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -136,7 +145,6 @@ html, body
 .imgApp
 {
     width: 50px;
-
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -145,11 +153,12 @@ html, body
 .divRequestTypes
 {
     font-size: 14px !important;
+    width: 208px !important;
 }
 
 .divInfoContainer
 {
-    z-index:1002;
+    z-index: 1002;
 }
 
 .divInfoContent
@@ -158,9 +167,9 @@ html, body
     background-color: transparent;
 }
 
- .submitTable
+.submitTable
 {
-    width:98%;
+    width: 98%;
 }
 
 .infoOptions
@@ -168,13 +177,13 @@ html, body
     height: 44px !important;
     width: 44px !important;
     vertical-align: middle;
-   padding-left: 2px;
-   padding-right: 3px;
+    padding-left: 2px;
+    padding-right: 3px;
 }
 
 .txtArea
 {
-    height:75px !important;
+    height: 75px !important;
     width: 286px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -185,7 +194,7 @@ html, body
 .divCreateRequestContainer
 {
     z-index: 1002;
-    background-color: rgba(71, 71, 71,.75);
+    background-color:rgba(71, 71, 71,.75);
     width: 100%;
     height: 100%;
     -moz-border-radius: 8px;
@@ -199,7 +208,7 @@ html, body
 
 .divCommentsContainer
 {
-   position: relative;
+    position: relative;
 }
 
 .divInfoDetails, .divCreateRequestContent
@@ -214,31 +223,31 @@ html, body
 
 .imgDropdownCarot
 {
-     height:44px !important;
-     width:44px !important;
+    height: 44px !important;
+    width: 44px !important;
 }
 
 .txtBox, .txtDescription, .divDropDownContainer
 {
-    width:210px !important;
+    width: 210px !important;
 }
 
 .divDropdown
 {
-    height:44px !important;
-    width:210px !important;
+    height: 44px !important;
+    width: 210px !important;
 }
 
 .divCmtIpContainer
 {
-   position: relative;
+    position: relative;
 }
 
 .txtSelectedRequest
 {
-     width:166px !important;
-     height:43px !important;
-     font-size: 14px !important;
+    width: 167px !important;
+    height: 43px !important;
+    font-size: 14px !important;
 }
 
 .txtDescription, .txtBox
@@ -251,7 +260,7 @@ html, body
     height: 110px !important;
 }
 
-.txtBox
+.txtBox, .txtFileName
 {
     height: 44px !important;
 }
@@ -265,6 +274,9 @@ html, body
 .esriSimpleSlider
 {
     top: 90px !important;
-
 }
 
+.divAddressScrollContent
+{
+    height: 120px !important;
+}

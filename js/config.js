@@ -1,5 +1,5 @@
 ﻿/** @license
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,18 +27,20 @@ dojo.declare("js.config", null, {
     // 4.  Set URL for help page                      - [ Tag(s) to look for: HelpURL ]
     // 5.  Specify URLs for base maps                  - [ Tag(s) to look for: BaseMapLayers ]
     // 6.  Set initial map extent                     - [ Tag(s) to look for: DefaultExtent ]
-    // 7.  Or for using map services:
-    // 7a. Specify URLs for operational layers        - [ Tag(s) to look for: serviceRequestLayerURL, serviceRequestmobileLayerURL, serviceRequestCommentsLayerURL ]
+
+    // 7.  Tags for using map services:
+    // 7a. Specify URLs for operational layers        - [ Tag(s) to look for: serviceRequestLayerURL, serviceRequestmobileLayerURL, serviceRequestCommentsLayerURL,RequestId,CommentId ]
+    //
     // 7b. Customize info-Window settings             - [ Tag(s) to look for: InfoWindowHeader, InfoWindowContent ]
     // 7c. Customize info-Popup settings              - [ Tag(s) to look for: infoWindowData, ShowCommentsTab ]
     // 7d. Customize info-Popup size                  - [ Tag(s) to look for: InfoPopupHeight, InfoPopupWidth ]
     // 7e. Customize data formatting                  - [ Tag(s) to look for: ShowNullValueAs, FormatDateAs ]
-    // 8. Customize address search settings           - [ Tag(s) to look for: LocatorURL, LocatorFields, LocatorDefaultAddress, LocatorMarkupSymbolPath]
+    // 8. Customize address search settings           - [ Tag(s) to look for: LocatorURL, LocatorNameFields, , LocatorDefaultAddress,LocatorDefaultPark, LocatorMarkupSymbolPath, AddressMatchScore,LocatorRippleSize ]
+    //LocatorFields
     // 9. Set URL for geometry service                - [ Tag(s) to look for: GeometryService ]
     // 10.Set for uploading images into iOS devices   - [ Tag(s) to look for: enablePhotoUploadiOS,photoUploadText ]
-    // 11. Specify URLs for map sharing               - [ Tag(s) to look for: FacebookShareURL, TwitterShareURL, ShareByMailLink ]
-    // 11a.In case of changing the TinyURL service
-    //     Specify URL for the new service            - [ Tag(s) to look for: MapSharingOptions (set TinyURLServiceURL, TinyURLResponseAttribute) ]
+    // 11.Specify URLs for map sharing               - [ Tag(s) to look for: MapSharingOptions,TinyURLServiceURL, TinyURLResponseAttribute, FacebookShareURL, TwitterShareURL, ShareByMailLink ]
+
 
 
     // ------------------------------------------------------------------------------------------------------------------------
@@ -51,7 +53,7 @@ dojo.declare("js.config", null, {
     ApplicationIcon: "images/logo.png",
 
     // Set splash window content - Message that appears when the application starts
-    SplashScreenMessage: "<br/><b>Submit a Request for Service:</b><br/><br/>Please search for an address or click directly on the map to locate your request for service. Then, provide additional detail and click or tap Submit to initiate your request.</br></br>If you find a request has already been submitted, you can click or tap on the existing request, provide additional comments and increase the importance of the request.<br/><br/>If you are using an iOS device, you'll need a third-party software application called Picup to submit a photo, video or other document related to a service request.<br/>",
+    SplashScreenMessage: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.",
 
     // Set URL of help page/portal
     HelpURL: "help.htm",
@@ -62,46 +64,43 @@ dojo.declare("js.config", null, {
     // Set baseMap layers
     // Please note: All base maps need to use the same spatial reference. By default, on application start the first basemap will be loaded
 
-    BaseMapLayers:
-          [
-                    {
-                        Key: "parcelMap",
-                        ThumbnailSource: "images/parcelmap.png",
-                        Name: "Streets",
-                        MapURL: "http://localgovtemplates.esri.com/ArcGIS/rest/services/ParcelPublicAccess/MapServer"
-                     },
-                    {
-                        Key: "hybridMap",
-                        ThumbnailSource: "images/imageryhybrid.png",
-                        Name: "Imagery",
-                        MapURL: "http://localgovtemplates.esri.com/ArcGIS/rest/services/ImageryHybrid/MapServer"
-                    }
-          ],
+    BaseMapLayers: [{
+        Key: "parcelMap",
+        ThumbnailSource: "images/parcelmap.png",
+        Name: "Parcel Map",
+        MapURL: "http://localgovtemplates.esri.com/ArcGIS/rest/services/ParcelPublicAccess/MapServer"
+
+    }, {
+        Key: "hybridMap",
+        ThumbnailSource: "images/imageryhybrid.png",
+        Name: "Hybrid Map",
+        MapURL: "http://localgovtemplates.esri.com/ArcGIS/rest/services/ImageryHybrid/MapServer"
+    }],
 
     // Initial map extent. Use comma (,) to separate values and don t delete the last comma
-    DefaultExtent: "-9815317.353,5126118.542,-9811259.298,5127735.811",
+    DefaultExtent: "-9816469.468316217, 5126012.140000998, -9810373.615310313, 5128950.188275787",
 
 
     // ------------------------------------------------------------------------------------------------------------------------
     // OPERATIONAL DATA SETTINGS
     // ------------------------------------------------------------------------------------------------------------------------
 
-    // if not using WebMap, set the following options
     // Configure operational layers:
-    ServiceRequestLayerURL:
-          {
-              ServiceURL: "http://localgovtemplates2.esri.com/ArcGIS/rest/services/CitizenService/ServiceRequest/FeatureServer/0"
-          },
-    ServiceRequestmobileLayerURL:
-          {
-              ServiceURL: "http://localgovtemplates2.esri.com/ArcGIS/rest/services/CitizenService/ServiceRequest/FeatureServer/0"
-          },
 
-    ServiceRequestCommentsLayerURL:
-          {
-              ServiceURL: "http://localgovtemplates2.esri.com/ArcGIS/rest/services/CitizenService/ServiceRequest/FeatureServer/1"
-          },
+    OperationalLayers: {
+        //URL used for doing query task on the ServiceRequest layer
+        ServiceRequestLayerURL: "http://203.199.47.146/arcgis/rest/services/ServiceRequest/ServiceRequest/FeatureServer/0",
+        //Set the primary key attribute for servicerequest
+        RequestId: "${requestid}",
 
+        ServiceRequestMobileLayerURL: "http://203.199.47.146/arcgis/rest/services/ServiceRequest/ServiceRequest/FeatureServer/0",
+
+        //URL used for doing query task on the comments layer
+        ServiceRequestCommentsLayerURL: "http://203.199.47.146/arcgis/rest/services/ServiceRequest/ServiceRequest/FeatureServer/1",
+        //Set the primary key attribute for the comments
+        CommentId: "${requestid}"
+
+    },
 
     // ------------------------------------------------------------------------------------------------------------------------
     // INFO-WINDOW SETTINGS
@@ -109,10 +108,13 @@ dojo.declare("js.config", null, {
 
     // Info-window is a small, two line popup that gets displayed on selecting a feature
     // Set Info-window title. Configure this with text/fields
-    InfoWindowHeader: "Request Number: ${REQUESTID}",
+    InfoWindowHeader: "Request ID: ${requestid}",
 
     // Choose content/fields for the info window
-    InfoWindowContent: "${REQUESTTYPE}",
+    InfoWindowContent: "${requesttype}",
+
+    //Define Service request layer name
+    RequestLayerName: "requesttype",
 
     // ------------------------------------------------------------------------------------------------------------------------
     // INFO-POPUP SETTINGS
@@ -120,29 +122,23 @@ dojo.declare("js.config", null, {
 
     // Info-popup is a popup dialog that gets displayed on selecting a feature
     // Set the content to be displayed on the info-Popup. Define labels, field values, field types and field formats
-    InfoWindowData:
-          [
-                    {
-                        DisplayText: "Problem:",
-                        AttributeValue: "${REQUESTTYPE}",
-                        DataType: "string"
-                    },
-                    {
-                        DisplayText: "Comment:",
-                        AttributeValue: "${COMMENTS}",
-                        DataType: "string"
-                    },
-                    {
-                        DisplayText: "Submitted On:",
-                        AttributeValue: "${REQUESTDATE}",
-                        DataType: "date"
-                    },
-                    {
-                        DisplayText: "Status:",
-                        AttributeValue: "${STATUS}",
-                        DataType: "string"
-                    }
-          ],
+    InfoWindowData: [{
+        DisplayText: "Type:",
+        AttributeValue: "${requesttype}",
+        DataType: "string"
+    }, {
+        DisplayText: "Comment:",
+        AttributeValue: "${comments}",
+        DataType: "string"
+    }, {
+        DisplayText: "Date Submitted:",
+        AttributeValue: "${requestdate}",
+        DataType: "date"
+    }, {
+        DisplayText: "Status:",
+        AttributeValue: "${status}",
+        DataType: "string"
+    }],
 
     // Set this to true to show "Comments" tab in the info-Popup
     ShowCommentsTab: true,
@@ -160,23 +156,77 @@ dojo.declare("js.config", null, {
     // Set date format
     FormatDateAs: "MMM dd, yyyy",
 
+    //Set the locator ripple size
+    LocatorRippleSize: 30,
+
+    //set ripple color for selected feature
+    RippleColor: [60, 72, 36],
+
+    //Set the attribute for displaying status of serviceRequest
+    Status: "${status}",
+
+
 
     // ------------------------------------------------------------------------------------------------------------------------
     // ADDRESS SEARCH SETTINGS
     // ------------------------------------------------------------------------------------------------------------------------
-    // Set Locator service URL
-    LocatorURL: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/TA_Address_NA_10/GeocodeServer",
 
-    // Set Locator fields (fields to be used for searching)
-    LocatorFields: "SingleLine",
+    // Set locator settings such as locator symbol, size, zoom level, display fields, match score
 
-    // Set default address to search
-    LocatorDefaultAddress: "971 Sylvan Cir, Naperville, IL, 60540",
+    LocatorSettings: {
+        DefaultLocatorSymbol: "images/redpushpin.png",
+        MarkupSymbolSize: {
+            width: 35,
+            height: 35
+        },
+        Locators: [{
+            DisplayText: "Address",
+            DefaultValue: "971 Sylvan Cir, Naperville, IL, 60540",
+            LocatorParamaters: ["SingleLine"],
+            LocatorURL: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/TA_Address_NA_10/GeocodeServer",
+            CandidateFields: "Loc_name, Score, Match_addr",
+            DisplayField: "${Match_addr}",
+            ZoomLevel: 7,
+            AddressMatchScore: 80,
+            LocatorDefaultRequest: "77257",
+            LocatorFieldName: 'Loc_name',
+            LocatorFieldValues: ["US_Streets", "US_StreetName"]
+        }, {
+            DisplayText: "Request ID",
+            DefaultValue: "Naperville",
+            QueryString: "requestid LIKE '${0}%'",
+            DisplayField: "${requestid}"
+        }]
+    },
 
-    // Set pushpin image path
+    // Define the database field names
+    // Note: DateFieldName refers to a date database field.
+    // All other attributes refer to text database fields.
+    DatabaseFields: {
+        RequestIdFieldName: "requestid",
+        CommentsFieldName: "comments",
+        DateFieldName: "submitdt",
+        RankFieldName: "rank"
+    },
 
-    LocatorMarkupSymbolURL: "images/pushpin.png",
+    //Define service request input fields for submitting a new request
+    ServiceRequestFields: {
+        RequestIdFieldName: "requestid",
+        RequestTypeFieldName: "requesttype",
+        CommentsFieldName: "comments",
+        NameFieldName: "name",
+        PhoneFieldName: "phone",
+        EmailFieldName: "email",
+        StatusFieldName: "status",
+        RequestDateFieldName: "requestdate"
+    },
 
+    // Set info-pop fields for adding and displaying comment
+    CommentsInfoPopupFieldsCollection: {
+        Rank: "${rank}",
+        SubmitDate: "${submitdt}",
+        Comments: "${comments}"
+    },
     // ------------------------------------------------------------------------------------------------------------------------
     // GEOMETRY SERVICE SETTINGS
     // ------------------------------------------------------------------------------------------------------------------------
@@ -184,28 +234,22 @@ dojo.declare("js.config", null, {
     // Set geometry service URL
     GeometryService: "http://localgovtemplates2.esri.com/ArcGIS/rest/services/Geometry/GeometryServer",
 
-
-    // ------------------------------------------------------------------------------------------------------------------------
-    // SETTING FOR PICUP
-    // ------------------------------------------------------------------------------------------------------------------------
-
-    //flag to set for uploading images into iOS devices (uses 3rd party application to upload pictures)
-    EnablePhotoUploadiOS: true,
-    //Message displayed for 3rd party software. This is a HTML text
-    PhotoUploadText: "Add attachment <hr/> <br/>This application uses \"Picup\" to add photos. You can download it from <a href='http://picupapp.com/' target='_blank'>PickupApp.com</a>",
-
     // ------------------------------------------------------------------------------------------------------------------------
     // SETTINGS FOR MAP SHARING
     // ------------------------------------------------------------------------------------------------------------------------
 
     // Set URL for TinyURL service, and URLs for social media
-    MapSharingOptions:
-          {
-              TinyURLServiceURL: "http://api.bit.ly/v3/shorten?login=esri&apiKey=R_65fd9891cd882e2a96b99d4bda1be00e&uri=${0}&format=json",
-              TinyURLResponseAttribute: "data.url",
-              FacebookShareURL: "http://www.facebook.com/sharer.php?u=${0}&t=Citizen%20Service%20Request",
-              TwitterShareURL: "http://twitter.com/home/?status=Citizen%20Service%20Request ${0}",
-              ShareByMailLink: "mailto:%20?subject=Checkout%20this%20map!&body=${0}"
-          }
+    MapSharingOptions: {
+        TinyURLServiceURL: "http://api.bit.ly/v3/shorten?login=esri&apiKey=R_65fd9891cd882e2a96b99d4bda1be00e&uri=${0}&format=json",
+        TinyURLResponseAttribute: "data.url",
+        FacebookShareURL: "http://www.facebook.com/sharer.php?u=${0}&t=Citizen%20Service%20Request",
+        TwitterShareURL: "http://twitter.com/home/?status=Citizen%20Service%20Request ${0}",
+        ShareByMailLink: "mailto:%20?subject=Checkout%20this%20map!&body=${0}"
+    },
+
+    // set this flag to true to enable uploading images into iOS devices (uses 3rd party application to upload pictures)
+    EnablePhotoUploadiOS: true,
+    //Message displayed for 3rd party software. This is a HTML text
+    PhotoUploadText: "Add attachment <hr/> <br/>This application uses \"Picup\" to add photos. You can download it from <a href='http://picupapp.com/' target='_blank'>PickupApp.com</a>"
 
 });

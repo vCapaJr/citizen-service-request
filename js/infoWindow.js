@@ -1,5 +1,5 @@
 ﻿/** @license
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +14,25 @@
  | See the License for the specific language governing permissions and
  | limitations under the License.
  */
-dojo.provide("mobile.InfoWindow");
+dojo.provide("js.InfoWindow");
 dojo.require("esri.InfoWindowBase");
 
-dojo.declare("mobile.InfoWindow", [esri.InfoWindowBase], {
+dojo.declare("js.InfoWindow", [esri.InfoWindowBase], {
     constructor: function (parameters) {
         dojo.mixin(this, parameters);
         dojo.addClass(this.domNode, "divInfoWindowContainer");
-        this._container = dojo.create("div", { "class": "" }, this.domNode);
-        this._title = dojo.create("div", { "class": "title" }, this._container);
-        this._content = dojo.create("div", { "class": "content" }, this._container);
-        this._anchor = dojo.create("div", { "class": "divTriangle" }, this.domNode);
+        this._container = dojo.create("div", {
+            "class": ""
+        }, this.domNode);
+        this._title = dojo.create("div", {
+            "class": "title"
+        }, this._container);
+        this._content = dojo.create("div", {
+            "class": "content"
+        }, this._container);
+        this._anchor = dojo.create("div", {
+            "class": "divTriangle"
+        }, this.domNode);
         this._imgDetails;
         if (!isMobileDevice) {
             this._content.appendChild(dojo.byId('divCreateRequestContainer'));
@@ -34,7 +42,9 @@ dojo.declare("mobile.InfoWindow", [esri.InfoWindowBase], {
             dojo.byId('divInfoContent').style.display = "none";
             dojo.byId('divInfoContent').className = "";
         }
-        this._spanContent = dojo.create("span", { "class": "spanContentText" }, this._content);
+        this._spanContent = dojo.create("span", {
+            "class": "spanContentText"
+        }, this._content);
         // Hidden initially
         esri.hide(this.domNode);
         this.isShowing = false;
@@ -46,10 +56,13 @@ dojo.declare("mobile.InfoWindow", [esri.InfoWindowBase], {
     },
 
     setTitle: function (title, callbackHandler) {
-        RemoveChildren(this._title);
+        dojo.empty(this._title);
         var titleNode = document.createTextNode(title);
         this._title.appendChild(titleNode);
-        this._imgDetails = dojo.create("img", { "class": "imgArrow", "src": "images/arrow.png" }, this._title);
+        this._imgDetails = dojo.create("img", {
+            "class": "imgArrow",
+            "src": "images/arrow.png"
+        }, this._title);
     },
 
     imgDetailsInstance: function () {
@@ -63,8 +76,7 @@ dojo.declare("mobile.InfoWindow", [esri.InfoWindowBase], {
 
     show: function (location) {
         this._title.style.display = "block";
-        if (this._imgDetails)
-            this._imgDetails.style.display = "block";
+        if (this._imgDetails) this._imgDetails.style.display = "block";
         if (!isMobileDevice) {
             this._title.style.display = 'none';
         }

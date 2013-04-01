@@ -1,6 +1,6 @@
 ﻿/* This file contains the mobile specific style settings for "Service Request" template */
 /*
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,19 +19,20 @@
 /* Use this file to perform the following: */
 /* 1.  Set the body styles                        - { Style(s) to look for: html, body } */
 /* 2.  Set styles for icons, buttons and header
-       styles                                     - { Style(s) to look for: customButton,tableHeader,tdHeader,imgOptions,imgShare}*/
-/* 3.  Set the styles for search container        - { Style(s) to look for: divAddressContent,txtAddress,imgLocate}*/
+       styles                                     - { Style(s) to look for: customButton,imgOptions,imgShare,tdHeader}*/
+
+/* 3.  Set the styles for search container        - { Style(s) to look for: divAddressContent,.tdSearchByUnSelectedAddress,tdSearchByUnSelectedRequest,tdSearchByRequest,tdSearchByAddress,txtAddress,imgLocate,divAddressScrollContent}*/
 /* 4.  Set the styles for basemap container       - { Style(s) to look for: divLayerContainer,divLayerHolder,selectedBaseMap}*/
-/* 5.  Set the styles for info window             - { Style(s) to look for: divInfoContainer,divInfoContent,tdTotalTime,txtArea,txtBox,trRowStyle,txtSelectedRequest,
-                                                                            divInfoWindowContainer .content,divInfoWindowContainer .title,infoOptions,
-                                                                            divCreateRequestContainer,divCreateRequest,trRowStyle,spanContentText}*/
+/* 5.  Set the styles for info window             - { Style(s) to look for: divInfoContainer,divInfoContent,imgDropdownCarot,divCreateRequestContainer,divCreateRequest,
+                                                                            divInfoWindowContainer .content,divCreateRequestScrollContent,submitTable,submitDiv,infoOptions,tdTotalTime,txtArea,trRowStyle,divDropDownContainer,divDropdown,
+																			txtBox,txtFileName,tdAttach,tdSelect,txtSelectedRequest,txtDescription,divRequestTypes }*/
 /* 6.  Set the styles for esri slider             - { Style(s) to look for: esriSimpleSlider}*/
 
 /*---------------------------------------------------------------------------------------------------------------*/
 /* Styles for body*/
-body,html
+body, html
 {
-    font-size:11px !important;
+    font-size: 11px !important;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -47,21 +48,22 @@ body,html
     height: 30px !important;
     width: 30px !important;
     vertical-align: middle;
-    padding:0px 5px 0px 0px;
-    cursor:pointer;
+    padding: 0px 5px 0px 0px;
+    cursor: pointer;
 }
 
 .imgShare
 {
     height: 30px !important;
     width: 30px !important;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .tdHeader
 {
     width: 50px;
     font-weight: bolder;
+
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -70,7 +72,7 @@ body,html
 .divAddressContent
 {
     z-index: 1002;
-    position:absolute;
+    position: absolute;
     top: 60px;
     right: 15px;
     width: 300px;
@@ -80,18 +82,30 @@ body,html
     border-radius: 8px;
 }
 
+.tdSearchByUnSelectedAddress, .tdSearchByUnSelectedRequest, .tdSearchByRequest, .tdSearchByAddress
+{
+    width: 90px;
+}
+
 .txtAddress
 {
-    height:30px !important;
-    font-size:11px !important;
+    height: 30px !important;
+    font-size: 11px !important;
     line-height: 30px;
-
 }
 
 .imgLocate
 {
     height: 30px !important;
     width: 30px !important;
+    vertical-align: middle;
+    top: 45px;
+    right: 25px;
+}
+
+.divAddressScrollContent
+{
+    height: 135px;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
@@ -110,7 +124,7 @@ body,html
 .divLayerHolder
 {
     width: 260px;
-    height:115px;
+    height: 115px;
     background: rgba(0,0,0,0.9);
     -pie-background: rgba(0,0,0,0.9);
     -moz-border-radius: 5px;
@@ -142,7 +156,8 @@ body,html
 
 .imgDropdownCarot
 {
-     height:25px !important;
+    height: 25px !important;
+    right: 2px;
 }
 
 .divCreateRequestContainer
@@ -164,17 +179,17 @@ body,html
 
 .divCreateRequestScrollContent
 {
-     padding-top:2px;
+    padding-top: 2px;
 }
 
- .submitTable
+.submitTable
 {
-    width:97% !important;
+    width: 97% !important;
 }
 
 .submitDiv
 {
- height: 30px;
+    height: 30px;
 }
 
 .infoOptions
@@ -182,9 +197,9 @@ body,html
     height: 30px !important;
     width: 30px !important;
     vertical-align: middle;
-   padding-left: 2px;
-   padding-right: 3px;
-    cursor:pointer;
+    padding-left: 2px;
+    padding-right: 3px;
+    cursor: pointer;
 }
 
 .tdTotalTime
@@ -194,10 +209,10 @@ body,html
 
 .txtArea
 {
-    font-size:11px !important;
+    font-size: 11px !important;
     width: 295px;
     height: 70px;
-    line-height:22px;
+    line-height: 22px;
 }
 
 .trRowStyle
@@ -207,39 +222,47 @@ body,html
 
 .divDropDownContainer, .divDropdown
 {
-     height:25px !important;
-     width: 235px !important;
+    height: 25px !important;
+    width: 235px !important;
 }
 
 .txtBox, .txtFileName
 {
     height: 25px !important;
-    line-height: 23px;
-    font-size:11px !important;
+    line-height: 23px !important;
+    font-size: 11px !important;
 }
+
 .tdAttach
 {
-    width:90%;
+    width: 90%;
 }
+
 .tdSelect
 {
-     width:10%;
-     cursor: pointer;
+    width: 10%;
+    cursor: pointer;
 }
 
 .txtSelectedRequest
 {
-    font-size:11px;
-    height:25px !important;
+    font-size: 11px;
+    height: 25px !important;
 }
+
 .txtDescription, .divRequestTypes
 {
-    font-size:11px !important;
+    font-size: 11px !important;
+}
+
+.divRequestTypes
+{
+    height: 128px;
 }
 /*---------------------------------------------------------------------------------------------------------*/
 /* esri slider style*/
+
 .esriSimpleSlider
 {
     top: 90px !important;
 }
-

@@ -1,5 +1,5 @@
 ﻿/** @license
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,9 @@
  | See the License for the specific language governing permissions and
  | limitations under the License.
  */
-//function for creating the basemap components
+//Create base-map components
 function CreateBaseMapComponent() {
-    for (var i = 0; i < baseMapLayers.length; i++)
-    {
+    for (var i = 0; i < baseMapLayers.length; i++) {
         map.addLayer(CreateBaseMapLayer(baseMapLayers[i].MapURL, baseMapLayers[i].Key, (i == 0) ? true : false));
     }
     var layerList = dojo.byId('layerList');
@@ -34,17 +33,16 @@ function CreateBaseMapComponent() {
             layerList.appendChild(CreateBaseMapElement(layerInfo));
         }
     }
-    if (!(dojo.isIE < 9)) {
-        dojo.addClass(dojo.byId("imgThumbNail" + baseMapLayers[0].Key), "selectedBaseMap");
-        if (dojo.isIE) {
-            dojo.byId("imgThumbNail" + baseMapLayers[0].Key).style.marginTop = "-5px";
-            dojo.byId("imgThumbNail" + baseMapLayers[0].Key).style.marginLeft = "-5px";
-            dojo.byId("spanBaseMapText" + baseMapLayers[0].Key).style.marginTop = "5px";
-        }
+    dojo.addClass(dojo.byId("imgThumbNail" + baseMapLayers[0].Key), "selectedBaseMap");
+    if (dojo.isIE) {
+        dojo.byId("imgThumbNail" + baseMapLayers[0].Key).style.marginTop = "-5px";
+        dojo.byId("imgThumbNail" + baseMapLayers[0].Key).style.marginLeft = "-5px";
+        dojo.byId("spanBaseMapText" + baseMapLayers[0].Key).style.marginTop = "5px";
     }
+
 }
 
-//function for creating the elements for toggling the maps
+//Create elements to toggle the maps
 function CreateBaseMapElement(baseMapLayerInfo) {
     var divContainer = document.createElement("div");
     divContainer.className = "baseMapContainerNode";
@@ -66,7 +64,7 @@ function CreateBaseMapElement(baseMapLayerInfo) {
     return divContainer;
 }
 
-//function for changing the layer onclick
+//Toggle Basemap
 function ChangeBaseMap(spanControl) {
     HideMapLayers();
     var key = spanControl.getAttribute('layerId');
@@ -79,27 +77,28 @@ function ChangeBaseMap(spanControl) {
             dojo.byId("spanBaseMapText" + baseMapLayers[i].Key).style.marginTop = "0px";
         }
         if (baseMapLayers[i].Key == key) {
-            if (!(dojo.isIE < 9)) {
-                dojo.addClass(dojo.byId("imgThumbNail" + baseMapLayers[i].Key), "selectedBaseMap");
-                if (dojo.isIE) {
-                    dojo.byId("imgThumbNail" + baseMapLayers[i].Key).style.marginTop = "-5px";
-                    dojo.byId("imgThumbNail" + baseMapLayers[i].Key).style.marginLeft = "-5px";
-                    dojo.byId("spanBaseMapText" + baseMapLayers[i].Key).style.marginTop = "5px";
-                }
+            dojo.addClass(dojo.byId("imgThumbNail" + baseMapLayers[i].Key), "selectedBaseMap");
+            if (dojo.isIE) {
+                dojo.byId("imgThumbNail" + baseMapLayers[i].Key).style.marginTop = "-5px";
+                dojo.byId("imgThumbNail" + baseMapLayers[i].Key).style.marginLeft = "-5px";
+                dojo.byId("spanBaseMapText" + baseMapLayers[i].Key).style.marginTop = "5px";
             }
+
             var layer = map.getLayer(baseMapLayers[i].Key);
             layer.show();
         }
     }
 }
 
-//function for creating the layer on the map
+//Create layer on map
 function CreateBaseMapLayer(layerURL, layerId, isVisible) {
-    var layer = new esri.layers.ArcGISTiledMapServiceLayer(layerURL, { id: layerId, visible: isVisible });
+    var layer = new esri.layers.ArcGISTiledMapServiceLayer(layerURL, {
+        id: layerId,
+        visible: isVisible
+    });
     return layer;
 }
 
-//function to hide the layers
 function HideMapLayers() {
     for (var i = 0; i < baseMapLayers.length; i++) {
         var layer = map.getLayer(baseMapLayers[i].Key);
@@ -109,18 +108,15 @@ function HideMapLayers() {
     }
 }
 
-//function to animate basemap switch
+//Animate base map panel with wipe-in and wipe-out animation
 function ShowBaseMaps() {
     HideShareAppContainer();
     HideAddressContainer();
     var cellHeight = (isTablet) ? 100 : 115;
     if (dojo.coords("divLayerContainer").h > 0) {
         HideBaseMapLayerContainer();
-    }
-   else {
+    } else {
         dojo.byId('divLayerContainer').style.height = Math.ceil(baseMapLayers.length / 2) * cellHeight + "px";
         dojo.replaceClass("divLayerContainer", "showContainerHeight", "hideContainerHeight");
     }
 }
-
-

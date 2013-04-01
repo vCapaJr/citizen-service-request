@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,23 +16,23 @@
  | limitations under the License.
 -->
 <Messages>
-  <addressToLocate>Enter address to locate.</addressToLocate>
-  <unableToLocate>Unable to locate specified address.</unableToLocate>
-  <noDataAvlbl>Searched address is outside the supported area.</noDataAvlbl>
-  <blankAddress>Enter address to locate.</blankAddress>
-  <enterComment>Please enter comment.</enterComment>
-  <commentsLength>Comment should not exceed 250 characters.</commentsLength>
-  <tinyURLEngine>Bitly API is not able to generate tiny URL.</tinyURLEngine>
-  <geoLocation>You are currently outside the supported area.</geoLocation>
-  <geolocationTimeout>Request timed out.</geolocationTimeout>
-  <geolocationPositionUnavailable>Position unavailable.</geolocationPositionUnavailable>
-  <geolocationPermissionDenied>Permission denied.</geolocationPermissionDenied>
-  <geolocationUnKnownError>Unknown error.</geolocationUnKnownError>
-  <noComment>No comment</noComment>
-  <selectRequestType>Please select request type.</selectRequestType>
-  <enterValidEmailId>Please enter valid email ID.</enterValidEmailId>
-  <emailIdLength>Email ID should not exceed 100 characters.</emailIdLength>
-  <enterValidPhone>Phone number should be of 10 digits.</enterValidPhone>
-  <nameProvisions>Name accepts alphabets, space, ".", "-".</nameProvisions>
-  <fileSize>Unable to add attachement. Either file size is 0 or > 5MB or a network error.</fileSize>
+    <addressToLocate>Enter address to locate.</addressToLocate>
+    <blankAddress>Enter address to locate.</blankAddress>
+    <serviceToLocate>Enter Request ID to locate.</serviceToLocate>
+    <enterComment>Please enter comment.</enterComment>
+    <commentsLength>Comment should not exceed 250 characters.</commentsLength>
+    <tinyURLEngine>Bitly API is not able to generate tiny URL.</tinyURLEngine>
+    <geoLocation>You are currently outside the supported area.</geoLocation>
+    <geolocationTimeout>Request timed out.</geolocationTimeout>
+    <geolocationPositionUnavailable>Position unavailable.</geolocationPositionUnavailable>
+    <geolocationPermissionDenied>Permission denied.</geolocationPermissionDenied>
+    <geolocationUnKnownError>Unknown error.</geolocationUnKnownError>
+    <noComment>No comment</noComment>
+    <selectRequestType>Please select request type.</selectRequestType>
+    <enterValidEmailId>Please enter valid email ID.</enterValidEmailId>
+    <emailIdLength>Email ID should not exceed 100 characters.</emailIdLength>
+    <enterValidPhone>Phone number should be of 10 digits.</enterValidPhone>
+    <nameProvisions>Name accepts alphabets, space, ".", "-".</nameProvisions>
+    <fileSize> Service request '${0}' has been created without attachment because the file size is more then 5MB</fileSize>
+    <invalidSearch>No results found</invalidSearch>
 </Messages>

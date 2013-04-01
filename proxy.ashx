@@ -1,6 +1,6 @@
 <%@ WebHandler Language="C#" Class="proxy" %>
 /*
- | Version 10.1.1
+ | Version 10.2
  | Copyright 2012 Esri
  |
  | Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,14 +45,14 @@ public class proxy : IHttpHandler {
         string uri = context.Request.Url.Query.Substring(1);
 
         // Get token, if applicable, and append to the request
-        string token = getTokenFromConfigFile(uri);
-        if (!String.IsNullOrEmpty(token))
-        {
-            if (uri.Contains("?"))
-                uri += "&token=" + token;
-            else
-                uri += "?token=" + token;
-        }
+        //string token = getTokenFromConfigFile(uri);
+        //if (!String.IsNullOrEmpty(token))
+        //{
+        //    if (uri.Contains("?"))
+        //        uri += "&token=" + token;
+        //    else
+        //        uri += "?token=" + token;
+        //}
 
         System.Net.HttpWebRequest req = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(uri);
 
@@ -255,6 +255,7 @@ public class ProxyConfig
             {
                 if (String.Compare(uri, su.Url, StringComparison.InvariantCultureIgnoreCase) == 0)
                     return su.Token;
+
             }
         }
 
