@@ -48,6 +48,7 @@ var infoWindowHeader; //variable used to store the info window header
 var infoPopupHeight; //variable used for storing the info window height
 var infoPopupWidth; //variable used for storing the info window width
 var showCommentsTab; //variable used for toggling the comments tab
+var allowAttachments; //variable used for toggling visibility of attachments control
 var mapPoint; //variable to store map point
 var formatDateAs; //variable to store date format
 var selectedMapPoint; // variable to store selected map point
@@ -298,6 +299,7 @@ function dojoInit() {
     infoWindowContent = responseObject.InfoWindowContent;
     infoWindowHeader = responseObject.InfoWindowHeader;
     showCommentsTab = responseObject.ShowCommentsTab;
+    allowAttachments = responseObject.AllowAttachments;
     geometryService = new esri.tasks.GeometryService(responseObject.GeometryService);
     rippleColor = responseObject.RippleColor;
     locatorRippleSize = responseObject.LocatorRippleSize;
@@ -321,6 +323,11 @@ function dojoInit() {
         map.setExtent(startExtent);
 
     });
+
+    if (!allowAttachments) {
+        dojo.byId('trFileUpload').style.display = "none";
+    }
+
     dojo.byId('spanAddAttachmentText').innerHTML = photoUploadText;
 
     dojo.connect(dojo.byId('imgHelp'), "onclick", function () {

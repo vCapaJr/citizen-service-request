@@ -32,7 +32,7 @@ dojo.declare("js.config", null, {
     // 7a. Specify URLs for operational layers        - [ Tag(s) to look for: serviceRequestLayerURL, serviceRequestmobileLayerURL, serviceRequestCommentsLayerURL,RequestId,CommentId ]
     //
     // 7b. Customize info-Window settings             - [ Tag(s) to look for: InfoWindowHeader, InfoWindowContent ]
-    // 7c. Customize info-Popup settings              - [ Tag(s) to look for: infoWindowData, ShowCommentsTab ]
+    // 7c. Customize info-Popup settings              - [ Tag(s) to look for: infoWindowData, ShowCommentsTab, AllowAttachments ]
     // 7d. Customize info-Popup size                  - [ Tag(s) to look for: InfoPopupHeight, InfoPopupWidth ]
     // 7e. Customize data formatting                  - [ Tag(s) to look for: ShowNullValueAs, FormatDateAs ]
     // 8. Customize address search settings           - [ Tag(s) to look for: LocatorURL, LocatorNameFields, , LocatorDefaultAddress,LocatorDefaultPark, LocatorMarkupSymbolPath, AddressMatchScore,LocatorRippleSize ]
@@ -142,6 +142,9 @@ dojo.declare("js.config", null, {
 
     // Set this to true to show "Comments" tab in the info-Popup
     ShowCommentsTab: true,
+
+    // Set this to true to show the Attach portion of the info-popup
+    AllowAttachments: true,
 
     // Set size of the info-Popup - select maximum height and width in pixels (not applicable for tabbed info-Popup)
     //minimum height should be 270 for the info-popup in pixels
