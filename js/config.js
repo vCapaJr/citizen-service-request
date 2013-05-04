@@ -53,7 +53,7 @@ dojo.declare("js.config", null, {
     ApplicationIcon: "images/logo.png",
 
     // Set splash window content - Message that appears when the application starts
-    SplashScreenMessage: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.",
+    SplashScreenMessage: "<br/><b>Submit a Request for Service:</b><br/><br/>Please search for an address or click directly on the map to locate your request for service. Then, provide additional detail and click or tap Submit to initiate your request.</br></br>If you find a request has already been submitted, you can click or tap on the existing request, provide additional comments and increase the importance of the request.<br/><br/>If you are using an iOS device, you'll need a third-party software application called Picup to submit a photo, video or other document related to a service request.<br/>",
 
     // Set URL of help page/portal
     HelpURL: "help.htm",
