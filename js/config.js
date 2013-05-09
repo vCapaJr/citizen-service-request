@@ -78,7 +78,7 @@ dojo.declare("js.config", null, {
     }],
 
     // Initial map extent. Use comma (,) to separate values and don t delete the last comma
-    DefaultExtent: "-9816469.468316217, 5126012.140000998, -9810373.615310313, 5128950.188275787",
+    DefaultExtent: "-9816010,5123000,-9809970,5129500",
 
 
     // ------------------------------------------------------------------------------------------------------------------------
@@ -184,16 +184,16 @@ dojo.declare("js.config", null, {
         },
         Locators: [{
             DisplayText: "Address",
-            DefaultValue: "971 Sylvan Cir, Naperville, IL, 60540",
+            DefaultValue: "139 W Porter Ave Naperville IL 60540",
             LocatorParamaters: ["SingleLine"],
-            LocatorURL: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/TA_Address_NA_10/GeocodeServer",
+            LocatorURL: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
             CandidateFields: "Loc_name, Score, Match_addr",
             DisplayField: "${Match_addr}",
             ZoomLevel: 7,
             AddressMatchScore: 80,
             LocatorDefaultRequest: "77257",
             LocatorFieldName: 'Loc_name',
-            LocatorFieldValues: ["US_Streets", "US_StreetName"]
+            LocatorFieldValues: ["USA.StreetName" , "USA.PointAddress", "USA.StreetAddress"]
         }, {
             DisplayText: "Request ID",
             DefaultValue: "Naperville",
