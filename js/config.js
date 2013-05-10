@@ -89,16 +89,16 @@ dojo.declare("js.config", null, {
 
     OperationalLayers: {
         //URL used for doing query task on the ServiceRequest layer
-        ServiceRequestLayerURL: "http://203.199.47.146/arcgis/rest/services/ServiceRequest/ServiceRequest/FeatureServer/0",
+        ServiceRequestLayerURL: "http://services.arcgis.com/b6gLrKHqgkQb393u/arcgis/rest/services/ServiceRequestTryItLive/FeatureServer/0",
         //Set the primary key attribute for servicerequest
-        RequestId: "${requestid}",
+        RequestId: "${REQUESTID}",
 
-        ServiceRequestMobileLayerURL: "http://203.199.47.146/arcgis/rest/services/ServiceRequest/ServiceRequest/FeatureServer/0",
+        ServiceRequestMobileLayerURL: "http://services.arcgis.com/b6gLrKHqgkQb393u/arcgis/rest/services/ServiceRequestTryItLive/FeatureServer/0",
 
         //URL used for doing query task on the comments layer
-        ServiceRequestCommentsLayerURL: "http://203.199.47.146/arcgis/rest/services/ServiceRequest/ServiceRequest/FeatureServer/1",
+        ServiceRequestCommentsLayerURL: "http://services.arcgis.com/b6gLrKHqgkQb393u/arcgis/rest/services/ServiceRequestTryItLive/FeatureServer/1",
         //Set the primary key attribute for the comments
-        CommentId: "${requestid}"
+        CommentId: "${REQUESTID}"
 
     },
 
@@ -108,13 +108,13 @@ dojo.declare("js.config", null, {
 
     // Info-window is a small, two line popup that gets displayed on selecting a feature
     // Set Info-window title. Configure this with text/fields
-    InfoWindowHeader: "Request ID: ${requestid}",
+    InfoWindowHeader: "Request ID: ${REQUESTID}",
 
     // Choose content/fields for the info window
-    InfoWindowContent: "${requesttype}",
+    InfoWindowContent: "${REQUESTTYPE}",
 
     //Define Service request layer name
-    RequestLayerName: "requesttype",
+    RequestLayerName: "REQUESTTYPE",
 
     // ------------------------------------------------------------------------------------------------------------------------
     // INFO-POPUP SETTINGS
@@ -124,19 +124,19 @@ dojo.declare("js.config", null, {
     // Set the content to be displayed on the info-Popup. Define labels, field values, field types and field formats
     InfoWindowData: [{
         DisplayText: "Type:",
-        AttributeValue: "${requesttype}",
+        AttributeValue: "${REQUESTTYPE}",
         DataType: "string"
     }, {
         DisplayText: "Comment:",
-        AttributeValue: "${comments}",
+        AttributeValue: "${COMMENTS}",
         DataType: "string"
     }, {
         DisplayText: "Date Submitted:",
-        AttributeValue: "${requestdate}",
+        AttributeValue: "${REQUESTDATE}",
         DataType: "date"
     }, {
         DisplayText: "Status:",
-        AttributeValue: "${status}",
+        AttributeValue: "${STATUS}",
         DataType: "string"
     }],
 
@@ -166,7 +166,7 @@ dojo.declare("js.config", null, {
     RippleColor: [60, 72, 36],
 
     //Set the attribute for displaying status of serviceRequest
-    Status: "${status}",
+    Status: "${STATUS}",
 
 
 
@@ -197,8 +197,8 @@ dojo.declare("js.config", null, {
         }, {
             DisplayText: "Request ID",
             DefaultValue: "Naperville",
-            QueryString: "requestid LIKE '${0}%'",
-            DisplayField: "${requestid}"
+            QueryString: "REQUESTID LIKE '${0}%'",
+            DisplayField: "${REQUESTID}"
         }]
     },
 
@@ -206,29 +206,29 @@ dojo.declare("js.config", null, {
     // Note: DateFieldName refers to a date database field.
     // All other attributes refer to text database fields.
     DatabaseFields: {
-        RequestIdFieldName: "requestid",
-        CommentsFieldName: "comments",
-        DateFieldName: "submitdt",
-        RankFieldName: "rank"
+        RequestIdFieldName: "REQUESTID",
+        CommentsFieldName: "COMMENTS",
+        DateFieldName: "SUBMITDT",
+        RankFieldName: "RANK"
     },
 
     //Define service request input fields for submitting a new request
     ServiceRequestFields: {
-        RequestIdFieldName: "requestid",
-        RequestTypeFieldName: "requesttype",
-        CommentsFieldName: "comments",
-        NameFieldName: "name",
-        PhoneFieldName: "phone",
-        EmailFieldName: "email",
-        StatusFieldName: "status",
-        RequestDateFieldName: "requestdate"
+        RequestIdFieldName: "REQUESTID",
+        RequestTypeFieldName: "REQUESTTYPE",
+        CommentsFieldName: "COMMENTS",
+        NameFieldName: "NAME",
+        PhoneFieldName: "PHONE",
+        EmailFieldName: "EMAIL",
+        StatusFieldName: "STATUS",
+        RequestDateFieldName: "REQUESTDATE"
     },
 
     // Set info-pop fields for adding and displaying comment
     CommentsInfoPopupFieldsCollection: {
-        Rank: "${rank}",
-        SubmitDate: "${submitdt}",
-        Comments: "${comments}"
+        Rank: "${RANK}",
+        SubmitDate: "${SUBMITDT}",
+        Comments: "${COMMENTS}"
     },
     // ------------------------------------------------------------------------------------------------------------------------
     // GEOMETRY SERVICE SETTINGS
