@@ -1,4 +1,5 @@
-﻿/** @license
+﻿/*global dojo */
+/** @license
  | Version 10.2
  | Copyright 2012 Esri
  |
@@ -193,7 +194,7 @@ dojo.declare("js.config", null, {
             AddressMatchScore: 80,
             LocatorDefaultRequest: "77257",
             LocatorFieldName: 'Loc_name',
-            LocatorFieldValues: ["USA.StreetName" , "USA.PointAddress", "USA.StreetAddress"]
+            LocatorFieldValues: ["USA.StreetName", "USA.PointAddress", "USA.StreetAddress"]
         }, {
             DisplayText: "Request ID",
             DefaultValue: "Naperville",
