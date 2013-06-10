@@ -78,6 +78,17 @@ dojo.declare("js.config", null, {
         MapURL: "http://arcgis-tenone2012-1974758903.us-west-1.elb.amazonaws.com/arcgis/rest/services/ImageryHybrid/MapServer"
     }],
 
+    // ------------------------------------------------------------------------------------------------------------------------
+    // Reference Overlay SETTINGS
+    // ------------------------------------------------------------------------------------------------------------------------
+    // Set the reference overlays.  This need to be individual layers from a feature or map service
+    // Please note: they need to be in the same spatial reference as the basemaps.
+
+    ReferenceOverlays: [
+    { URL: "http://arcgis-tenone2012-1974758903.us-west-1.elb.amazonaws.com/arcgis/rest/services/GovernmentServices/MapServer/0" },
+    { URL: "http://arcgis-tenone2012-1974758903.us-west-1.elb.amazonaws.com/arcgis/rest/services/GovernmentServices/MapServer/3" }
+    ],
+    
     // Initial map extent. Use comma (,) to separate values and don t delete the last comma
     DefaultExtent: "-9816010,5123000,-9809970,5129500",
 

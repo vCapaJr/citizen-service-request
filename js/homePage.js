@@ -1,19 +1,19 @@
 ﻿/** @license
- | Version 10.2
- | Copyright 2012 Esri
- |
- | Licensed under the Apache License, Version 2.0 (the "License");
- | you may not use this file except in compliance with the License.
- | You may obtain a copy of the License at
- |
- |    http://www.apache.org/licenses/LICENSE-2.0
- |
- | Unless required by applicable law or agreed to in writing, software
- | distributed under the License is distributed on an "AS IS" BASIS,
- | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- | See the License for the specific language governing permissions and
- | limitations under the License.
- */
+| Version 10.2
+| Copyright 2012 Esri
+|
+| Licensed under the Apache License, Version 2.0 (the "License");
+| you may not use this file except in compliance with the License.
+| You may obtain a copy of the License at
+|
+|    http://www.apache.org/licenses/LICENSE-2.0
+|
+| Unless required by applicable law or agreed to in writing, software
+| distributed under the License is distributed on an "AS IS" BASIS,
+| WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+| See the License for the specific language governing permissions and
+| limitations under the License.
+*/
 dojo.require("dojo.window");
 dojo.require("dojo.date.locale");
 dojo.require("dojox.mobile.View");
@@ -34,6 +34,7 @@ var isAndroidDevice = false; //This variable is set to true when the app is runn
 var operationalLayers; //variable to store operational layers
 var isTablet = false; //This variable is set to true when the app is running on tablets
 var baseMapLayers; //Variable for storing base map layers
+var referenceOverlays;
 var showNullValueAs; //variable to store the default value for replacing null values
 var mapSharingOptions; //variable for storing the tiny service URL
 var geometryService; //variable to store the Geometry service
@@ -219,6 +220,7 @@ function dojoInit() {
     }
     mapSharingOptions = responseObject.MapSharingOptions;
     baseMapLayers = responseObject.BaseMapLayers;
+    referenceOverlays = responseObject.ReferenceOverlays
     var infoWindow = new js.InfoWindow({
         domNode: dojo.create("div", null, dojo.byId("map"))
     });
@@ -286,6 +288,7 @@ function dojoInit() {
     });
     ShowProgressIndicator();
     CreateBaseMapComponent();
+    AddReferenceOverlays();
     operationalLayers = responseObject.OperationalLayers;
     serviceRequestCommentsLayerUrl = responseObject.ServiceRequestCommentsLayerURL;
     formatDateAs = responseObject.FormatDateAs;
