@@ -55,6 +55,9 @@ var formatDateAs; //variable to store date format
 var selectedMapPoint; // variable to store selected map point
 var serviceRequestCommentsLayerId = "serviceRequestCommentsLayerID"; //variable for comment layer
 var infoWindowData; //Variable used for Info window collection
+var infoWindowDataTitle; //Variable used to store the header text of the pop up
+
+
 var locatorMarkupSymbol;
 var windowURL = window.location.toString();
 var selectedRequest;
@@ -299,8 +302,53 @@ function dojoInit() {
     infoPopupHeight = responseObject.InfoPopupHeight;
     infoPopupWidth = responseObject.InfoPopupWidth;
     infoWindowData = responseObject.InfoWindowData;
+
+    if (responseObject.InfoWindowCreateTitle != null) {
+        if (responseObject.InfoWindowCreateTitle != "") {
+            dojo.byId("createPopUpTitle").innerText = responseObject.InfoWindowCreateTitle;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateType != null) {
+        if (responseObject.InfoWindowCreateType != "") {
+            dojo.byId("createPopUpType").innerText = responseObject.InfoWindowCreateType;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateName != null) {
+        if (responseObject.InfoWindowCreateName != "") {
+            dojo.byId("createPopUpName").innerText = responseObject.InfoWindowCreateName;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateComments != null) {
+        if (responseObject.InfoWindowCreateComments != "") {
+            dojo.byId("createPopUpComments").innerText = responseObject.InfoWindowCreateComments;
+        }
+    }
+
+    if (responseObject.InfoWindowCreatePhone != null) {
+        if (responseObject.InfoWindowCreatePhone != "") {
+            dojo.byId("createPopUpPhone").innerText = responseObject.InfoWindowCreatePhone;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateEmail != null) {
+        if (responseObject.InfoWindowCreateEmail != "") {
+            dojo.byId("createPopUpEmail").innerText = responseObject.InfoWindowCreateEmail;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateAttach != null) {
+        if (responseObject.InfoWindowCreateAttach != "") {
+            dojo.byId("createPopUpAttach").innerText = responseObject.InfoWindowCreateAttach;
+        }
+    }
     infoWindowContent = responseObject.InfoWindowContent;
     infoWindowHeader = responseObject.InfoWindowHeader;
+
+
+
     showCommentsTab = responseObject.ShowCommentsTab;
     allowAttachments = responseObject.AllowAttachments;
     geometryService = new esri.tasks.GeometryService(responseObject.GeometryService);

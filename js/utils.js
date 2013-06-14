@@ -20,7 +20,8 @@ var tinyUrl; //variable for storing the tiny URL
 var isContainerVisible = true; //variable for setting the flag on address container
 
 function AddReferenceOverlays() {
-    if (referenceOverlays != null) {
+    if (referenceOverlays != null)
+    {
         for (var i = 0; i < referenceOverlays.length; i++) {
             map.addLayer(new esri.layers.FeatureLayer(referenceOverlays[i].URL, {
                 mode: esri.layers.FeatureLayer.MODE_SNAPSHOT
