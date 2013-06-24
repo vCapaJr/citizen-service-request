@@ -237,11 +237,18 @@ function ServiceRequestDetails(attributes) {
                 CreateTableRow(tr, infoWindowData[index].DisplayText, dojo.string.substitute(infoWindowData[index].AttributeValue, attributes));
                 break;
             case "date":
-                var utcMilliseconds = Number(dojo.string.substitute(infoWindowData[index].AttributeValue, attributes));
-                CreateTableRow(tr, infoWindowData[index].DisplayText, dojo.date.locale.format(date.utcToLocal(date.utcTimestampFromMs(utcMilliseconds)), {
-                    datePattern: formatDateAs,
-                    selector: "date"
-                }));
+                // Extract the desired date field from the list of attributes. If the date is not available, the date field is an empty string
+                var dateField = dojo.string.substitute(infoWindowData[index].AttributeValue, attributes);
+                var dateString = showNullValueAs;
+                if (dateField.length > 0)
+                {
+                    var utcMilliseconds = Number(dateField);
+                    dateString = dojo.date.locale.format(date.utcToLocal(date.utcTimestampFromMs(utcMilliseconds)), {
+                        datePattern: formatDateAs,
+                        selector: "date"
+                    });
+                }
+                CreateTableRow(tr, infoWindowData[index].DisplayText, dateString);
                 break;
         }
     }
