@@ -266,6 +266,8 @@ function dojoInit() {
     dojo.byId('imgApp').src = responseObject.ApplicationIcon;
     dojo.byId('divSplashContent').innerHTML = responseObject.SplashScreenMessage;
     dojo.byId('lblAppName').innerHTML = responseObject.ApplicationName;
+    document.title = responseObject.ApplicationName;
+
     dojo.xhrGet({
         url: "ErrorMessages.xml",
         handleAs: "xml",

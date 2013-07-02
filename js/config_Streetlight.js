@@ -1,20 +1,20 @@
 ﻿/*global dojo */
 /** @license
-| Version 10.2
-| Copyright 2012 Esri
-|
-| Licensed under the Apache License, Version 2.0 (the "License");
-| you may not use this file except in compliance with the License.
-| You may obtain a copy of the License at
-|
-|    http://www.apache.org/licenses/LICENSE-2.0
-|
-| Unless required by applicable law or agreed to in writing, software
-| distributed under the License is distributed on an "AS IS" BASIS,
-| WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-| See the License for the specific language governing permissions and
-| limitations under the License.
-*/
+ | Version 10.2
+ | Copyright 2012 Esri
+ |
+ | Licensed under the Apache License, Version 2.0 (the "License");
+ | you may not use this file except in compliance with the License.
+ | You may obtain a copy of the License at
+ |
+ |    http://www.apache.org/licenses/LICENSE-2.0
+ |
+ | Unless required by applicable law or agreed to in writing, software
+ | distributed under the License is distributed on an "AS IS" BASIS,
+ | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ | See the License for the specific language governing permissions and
+ | limitations under the License.
+ */
 dojo.provide("js.config");
 dojo.declare("js.config", null, {
 
@@ -26,8 +26,7 @@ dojo.declare("js.config", null, {
     // 2.  Set path for application icon              - [ Tag(s) to look for: ApplicationIcon ]
     // 3.  Set splash screen message                  - [ Tag(s) to look for: SplashScreenMessage ]
     // 4.  Set URL for help page                      - [ Tag(s) to look for: HelpURL ]
-    // 5.  Specify URLs for base maps                 - [ Tag(s) to look for: BaseMapLayers ]
-    // 5a. Specify URLs for any reference overlays    - [ Tag(s) to look for: ReferenceOverlays ]
+    // 5.  Specify URLs for base maps                  - [ Tag(s) to look for: BaseMapLayers ]
     // 6.  Set initial map extent                     - [ Tag(s) to look for: DefaultExtent ]
 
     // 7.  Tags for using map services:
@@ -49,13 +48,13 @@ dojo.declare("js.config", null, {
     // GENERAL SETTINGS
     // ------------------------------------------------------------------------------------------------------------------------
     // Set application title
-    ApplicationName: "Citizen Service Request",
+    ApplicationName: "Report a Streetlight Problem",
 
     // Set application icon path
-    ApplicationIcon: "images/logo.png",
+    ApplicationIcon: "images/StreetLight.png",
 
     // Set splash window content - Message that appears when the application starts
-    SplashScreenMessage: "<br/><b>Submit a Request for Service:</b><br/><br/>Please search for an address or click directly on the map to locate your request for service. Then, provide additional detail and click or tap Submit to initiate your request.</br></br>If you find a request has already been submitted, you can click or tap on the existing request, provide additional comments and increase the importance of the request.",
+    SplashScreenMessage: "<br/><b>Submit a Request for a Streetlight Problem:</b><br/><br/>Please search for an address or click directly on the map to locate the light. Then, provide additional detail and click or tap Submit to initiate your request.</br></br>If you find a request has already been submitted, you can click or tap on the existing request, provide additional comments and increase the importance of the request.",
 
     // Set URL of help page/portal
     HelpURL: "help.htm",
@@ -70,21 +69,21 @@ dojo.declare("js.config", null, {
         Key: "parcelMap",
         ThumbnailSource: "images/parcelmap.png",
         Name: "Streets",
-        MapURL: "http://tryitlive.arcgis.com/arcgis/rest/services/GeneralPurpose/MapServer"
+        MapURL: "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
 
     }, {
-        Key: "hybridMap",
+        Key: "Imagery",
         ThumbnailSource: "images/imageryhybrid.png",
         Name: "Imagery",
-        MapURL: "http://tryitlive.arcgis.com/arcgis/rest/services/ImageryHybrid/MapServer"
+        MapURL: "http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"
     }],
-    //This section allows you to add a feature or map service layer, it must be an layer, not a service
-    //use the following format {URL: ""},{URL: ""},... 	
-    ReferenceOverlays: [
-    ],
 
+    ReferenceOverlays: [
+    { URL: "http://services.arcgis.com/8xyWD7BXPXLSUGKQ/arcgis/rest/services/ReportStreetlightProblem/FeatureServer/1" }
+    ],
+    
     // Initial map extent. Use comma (,) to separate values and don t delete the last comma
-    DefaultExtent: "-9816010,5123000,-9809970,5129500",
+    DefaultExtent: "-8946100,3177490,-8934600,3181000",
 
 
     // ------------------------------------------------------------------------------------------------------------------------
@@ -95,14 +94,14 @@ dojo.declare("js.config", null, {
 
     OperationalLayers: {
         //URL used for doing query task on the ServiceRequest layer
-        ServiceRequestLayerURL: "http://services.arcgis.com/b6gLrKHqgkQb393u/arcgis/rest/services/ServiceRequestTryItLive/FeatureServer/0",
+        ServiceRequestLayerURL: "http://services.arcgis.com/8xyWD7BXPXLSUGKQ/arcgis/rest/services/ReportStreetlightProblem/FeatureServer/0",
         //Set the primary key attribute for servicerequest
         RequestId: "${REQUESTID}",
 
-        ServiceRequestMobileLayerURL: "http://services.arcgis.com/b6gLrKHqgkQb393u/arcgis/rest/services/ServiceRequestTryItLive/FeatureServer/0",
+        ServiceRequestMobileLayerURL: "http://services.arcgis.com/8xyWD7BXPXLSUGKQ/arcgis/rest/services/ReportStreetlightProblem/FeatureServer/0",
 
         //URL used for doing query task on the comments layer
-        ServiceRequestCommentsLayerURL: "http://services.arcgis.com/b6gLrKHqgkQb393u/arcgis/rest/services/ServiceRequestTryItLive/FeatureServer/1",
+        ServiceRequestCommentsLayerURL: "http://services.arcgis.com/8xyWD7BXPXLSUGKQ/arcgis/rest/services/ReportStreetlightProblem/FeatureServer/2",
         //Set the primary key attribute for the comments
         CommentId: "${REQUESTID}"
 
@@ -125,23 +124,23 @@ dojo.declare("js.config", null, {
     // ------------------------------------------------------------------------------------------------------------------------
     // INFO-POPUP SETTINGS
     // ------------------------------------------------------------------------------------------------------------------------
-    //The labels displayed next to the input boxes when creating a new point, leaving them blank will use the defaults
-    InfoWindowCreateTitle: "",
-    InfoWindowCreateType: "",
-    InfoWindowCreateComments: "",
-    InfoWindowCreateName: "",
-    InfoWindowCreatePhone: "",
-    InfoWindowCreateEmail: "",
-    InfoWindowCreateAttach: "",
 
     // Info-popup is a popup dialog that gets displayed on selecting a feature
     // Set the content to be displayed on the info-Popup. Define labels, field values, field types and field formats
+    InfoWindowCreateTitle: "Report a Streetlight Problem",
+    InfoWindowCreateType: "Type:",
+    InfoWindowCreateComments: "Pole Number or Comments:",
+    InfoWindowCreateName: "Name:",
+    InfoWindowCreatePhone: "Phone:",
+    InfoWindowCreateEmail: "Email:",
+    InfoWindowCreateAttach: "Attach:",
+
     InfoWindowData: [{
         DisplayText: "Type:",
         AttributeValue: "${REQUESTTYPE}",
         DataType: "string"
     }, {
-        DisplayText: "Comment:",
+        DisplayText: "Pole Number or Comments:",
         AttributeValue: "${COMMENTS}",
         DataType: "string"
     }, {
@@ -198,19 +197,19 @@ dojo.declare("js.config", null, {
         },
         Locators: [{
             DisplayText: "Address",
-            DefaultValue: "139 W Porter Ave Naperville IL 60540",
+            DefaultValue: "199 N 2nd St,Fort Pierce, Fl 34950",
             LocatorParamaters: ["SingleLine"],
             LocatorURL: "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
             CandidateFields: "Loc_name, Score, Match_addr",
             DisplayField: "${Match_addr}",
             ZoomLevel: 7,
             AddressMatchScore: 80,
-            LocatorDefaultRequest: "77257",
+            LocatorDefaultRequest: "1",
             LocatorFieldName: 'Loc_name',
             LocatorFieldValues: ["USA.StreetName", "USA.PointAddress", "USA.StreetAddress"]
         }, {
             DisplayText: "Request ID",
-            DefaultValue: "Naperville",
+            DefaultValue: "Westerville",
             QueryString: "REQUESTID LIKE '${0}%'",
             DisplayField: "${REQUESTID}"
         }]
@@ -249,7 +248,7 @@ dojo.declare("js.config", null, {
     // ------------------------------------------------------------------------------------------------------------------------
 
     // Set geometry service URL
-    GeometryService: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
+    GeometryService: "http://arcgis-tenone2012-1974758903.us-west-1.elb.amazonaws.com/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
     // ------------------------------------------------------------------------------------------------------------------------
     // SETTINGS FOR MAP SHARING
@@ -261,7 +260,7 @@ dojo.declare("js.config", null, {
         TinyURLResponseAttribute: "data.url",
         FacebookShareURL: "http://www.facebook.com/sharer.php?u=${0}&t=Citizen%20Service%20Request",
         TwitterShareURL: "http://mobile.twitter.com/compose/tweet?status=Citizen%20Service%20Request ${0}",
-        ShareByMailLink: "mailto:%20?subject=Check%20out%20this%20map!&body=${0}"
+        ShareByMailLink: "mailto:%20?subject=Checkout%20this%20map!&body=${0}"
     },
 
     // set this flag to true to enable uploading images into iOS devices (uses 3rd party application to upload pictures)
