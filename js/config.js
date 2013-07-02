@@ -77,7 +77,12 @@ dojo.declare("js.config", null, {
         Name: "Imagery",
         MapURL: "http://tryitlive.arcgis.com/arcgis/rest/services/ImageryHybrid/MapServer"
     }],
-
+    //This section allows you to add a feature or map service layer, it must be an layer, not a service
+    //use the following format {URL: ""},{URL: ""},... 	
+    ReferenceOverlays: [
+    
+    ],
+    
     // Initial map extent. Use comma (,) to separate values and don t delete the last comma
     DefaultExtent: "-9816010,5123000,-9809970,5129500",
 

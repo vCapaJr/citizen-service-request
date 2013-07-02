@@ -19,7 +19,16 @@ var tinyResponse; //variable for storing the response getting from tiny URL api
 var tinyUrl; //variable for storing the tiny URL
 var isContainerVisible = true; //variable for setting the flag on address container
 
-
+function AddReferenceOverlays() {
+    if (referenceOverlays != null)
+    {
+        for (var i = 0; i < referenceOverlays.length; i++) {
+            map.addLayer(new esri.layers.FeatureLayer(referenceOverlays[i].URL, {
+                mode: esri.layers.FeatureLayer.MODE_SNAPSHOT
+            }));
+        }
+    }
+}
 //function to remove scroll bar
 function RemoveScrollBar(container) {
     if (dojo.byId(container.id + 'scrollbar_track')) {

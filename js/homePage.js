@@ -1,19 +1,19 @@
 ﻿/** @license
- | Version 10.2
- | Copyright 2012 Esri
- |
- | Licensed under the Apache License, Version 2.0 (the "License");
- | you may not use this file except in compliance with the License.
- | You may obtain a copy of the License at
- |
- |    http://www.apache.org/licenses/LICENSE-2.0
- |
- | Unless required by applicable law or agreed to in writing, software
- | distributed under the License is distributed on an "AS IS" BASIS,
- | WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- | See the License for the specific language governing permissions and
- | limitations under the License.
- */
+| Version 10.2
+| Copyright 2012 Esri
+|
+| Licensed under the Apache License, Version 2.0 (the "License");
+| you may not use this file except in compliance with the License.
+| You may obtain a copy of the License at
+|
+|    http://www.apache.org/licenses/LICENSE-2.0
+|
+| Unless required by applicable law or agreed to in writing, software
+| distributed under the License is distributed on an "AS IS" BASIS,
+| WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+| See the License for the specific language governing permissions and
+| limitations under the License.
+*/
 dojo.require("dojo.window");
 dojo.require("dojo.date.locale");
 dojo.require("dojox.mobile.View");
@@ -34,6 +34,7 @@ var isAndroidDevice = false; //This variable is set to true when the app is runn
 var operationalLayers; //variable to store operational layers
 var isTablet = false; //This variable is set to true when the app is running on tablets
 var baseMapLayers; //Variable for storing base map layers
+var referenceOverlays;
 var showNullValueAs; //variable to store the default value for replacing null values
 var mapSharingOptions; //variable for storing the tiny service URL
 var geometryService; //variable to store the Geometry service
@@ -54,6 +55,9 @@ var formatDateAs; //variable to store date format
 var selectedMapPoint; // variable to store selected map point
 var serviceRequestCommentsLayerId = "serviceRequestCommentsLayerID"; //variable for comment layer
 var infoWindowData; //Variable used for Info window collection
+var infoWindowDataTitle; //Variable used to store the header text of the pop up
+
+
 var locatorMarkupSymbol;
 var windowURL = window.location.toString();
 var selectedRequest;
@@ -219,6 +223,7 @@ function dojoInit() {
     }
     mapSharingOptions = responseObject.MapSharingOptions;
     baseMapLayers = responseObject.BaseMapLayers;
+    referenceOverlays = responseObject.ReferenceOverlays
     var infoWindow = new js.InfoWindow({
         domNode: dojo.create("div", null, dojo.byId("map"))
     });
@@ -286,6 +291,7 @@ function dojoInit() {
     });
     ShowProgressIndicator();
     CreateBaseMapComponent();
+    AddReferenceOverlays();
     operationalLayers = responseObject.OperationalLayers;
     serviceRequestCommentsLayerUrl = responseObject.ServiceRequestCommentsLayerURL;
     formatDateAs = responseObject.FormatDateAs;
@@ -296,8 +302,53 @@ function dojoInit() {
     infoPopupHeight = responseObject.InfoPopupHeight;
     infoPopupWidth = responseObject.InfoPopupWidth;
     infoWindowData = responseObject.InfoWindowData;
+
+    if (responseObject.InfoWindowCreateTitle != null) {
+        if (responseObject.InfoWindowCreateTitle != "") {
+            dojo.byId("createPopUpTitle").innerText = responseObject.InfoWindowCreateTitle;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateType != null) {
+        if (responseObject.InfoWindowCreateType != "") {
+            dojo.byId("createPopUpType").innerText = responseObject.InfoWindowCreateType;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateName != null) {
+        if (responseObject.InfoWindowCreateName != "") {
+            dojo.byId("createPopUpName").innerText = responseObject.InfoWindowCreateName;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateComments != null) {
+        if (responseObject.InfoWindowCreateComments != "") {
+            dojo.byId("createPopUpComments").innerText = responseObject.InfoWindowCreateComments;
+        }
+    }
+
+    if (responseObject.InfoWindowCreatePhone != null) {
+        if (responseObject.InfoWindowCreatePhone != "") {
+            dojo.byId("createPopUpPhone").innerText = responseObject.InfoWindowCreatePhone;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateEmail != null) {
+        if (responseObject.InfoWindowCreateEmail != "") {
+            dojo.byId("createPopUpEmail").innerText = responseObject.InfoWindowCreateEmail;
+        }
+    }
+
+    if (responseObject.InfoWindowCreateAttach != null) {
+        if (responseObject.InfoWindowCreateAttach != "") {
+            dojo.byId("createPopUpAttach").innerText = responseObject.InfoWindowCreateAttach;
+        }
+    }
     infoWindowContent = responseObject.InfoWindowContent;
     infoWindowHeader = responseObject.InfoWindowHeader;
+
+
+
     showCommentsTab = responseObject.ShowCommentsTab;
     allowAttachments = responseObject.AllowAttachments;
     geometryService = new esri.tasks.GeometryService(responseObject.GeometryService);

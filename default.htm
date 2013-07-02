@@ -20,7 +20,7 @@
     -->
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Citizen Service Request</title>
+    <title>Report a Street Light Issue</title>
     <link rel="shortcut icon" href="images/logo.ico" />
     <link id="stylesheet" href='http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/dojo/dojox/mobile/themes/iPhone/iPhone.css'
         rel='stylesheet' />
@@ -28,8 +28,8 @@
     <link href="styles/serviceRequest.css" rel="stylesheet" type="text/css" />
     <link rel="Stylesheet" id="dynamicStyleSheet" />
     <script type="text/javascript" src="js/baseMapGallery.js"></script>
-    <link rel="apple-touch-icon" href="images/locgov-iphone-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/locgov-iphone-icon.png" />
+    <link rel="apple-touch-icon" href="images/iphone-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/iphone-icon.png" />
     <script type="text/javascript">
             var dojoConfig = {
                 async: false,
@@ -281,7 +281,7 @@
                         <table cellpadding="0px" cellspacing="0px" class="tblHeader" style="padding: 1px;
                             width: 100%;">
                             <tr style="height: 30px;" align="center" valign="top">
-                                <td class="tdHeader" align="left" valign="middle" style="padding-left: 7px; font-weight: bolder;
+                                <td id="createPopUpTitle" class="tdHeader" align="left" valign="middle" style="padding-left: 7px; font-weight: bolder;
                                     width: 90%">
                                     Service Request Details
                                 </td>
@@ -298,7 +298,7 @@
                                 border-bottom-width: 2px; border-left-width: 2px; border-right-width: 2px; border-top-width: 2px">
                                 <table id="submitTable" class="submitTable" style="color: #fff;" cellspacing="0px;">
                                     <tr class="trRowStyle">
-                                        <td style="padding-top: 2px;" valign="middle" align="left">
+                                        <td id="createPopUpType"style="padding-top: 2px;" valign="middle" align="left">
                                             Type:
                                         </td>
                                         <td valign="middle" align="left">
@@ -320,7 +320,7 @@
                                         </td>
                                     </tr>
                                     <tr class="trTextAreaRowStyle">
-                                        <td style="padding-top: 2px;" valign="top" align="left">
+                                        <td id="createPopUpComments" style="padding-top: 2px;" valign="top" align="left">
                                             Comment:
                                         </td>
                                         <td align="left">
@@ -329,7 +329,7 @@
                                         </td>
                                     </tr>
                                     <tr class="trRowStyle" id="trRowStyle">
-                                        <td style="padding-top: 2px;" valign="middle" align="left">
+                                        <td id="createPopUpName" style="padding-top: 2px;" valign="middle" align="left">
                                             Name:
                                         </td>
                                         <td align="left">
@@ -338,7 +338,7 @@
                                         </td>
                                     </tr>
                                     <tr class="trRowStyle">
-                                        <td style="padding-top: 2px;" valign="middle" align="left">
+                                        <td id="createPopUpPhone" style="padding-top: 2px;" valign="middle" align="left">
                                             Phone:
                                         </td>
                                         <td align="left">
@@ -347,7 +347,7 @@
                                         </td>
                                     </tr>
                                     <tr class="trRowStyle">
-                                        <td style="padding-top: 2px;" valign="middle" align="left">
+                                        <td id="createPopUpEmail" style="padding-top: 2px;" valign="middle" align="left">
                                             Email:
                                         </td>
                                         <td align="left">
@@ -356,7 +356,7 @@
                                         </td>
                                     </tr>
                                     <tr id="trFileUpload" class="trRowStyle">
-                                        <td style="padding-top: 2px;" valign="middle" align="left">
+                                        <td id="createPopUpAttach" style="padding-top: 2px;" valign="middle" align="left">
                                             Attach:
                                         </td>
                                         <td align="left" valign="middle">
