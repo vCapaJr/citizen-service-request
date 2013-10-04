@@ -119,8 +119,8 @@ dojo.declare("js.config", null, {
     // Choose content/fields for the info window
     InfoWindowContent: "${REQUESTTYPE}",
 
-    //Define Service request layer name
-    RequestLayerName: "REQUESTTYPE",
+    //Define Service request layer field name
+    RequestTypeFieldName: "REQUESTTYPE",
 
     // ------------------------------------------------------------------------------------------------------------------------
     // INFO-POPUP SETTINGS
